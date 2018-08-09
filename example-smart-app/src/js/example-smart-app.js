@@ -9,11 +9,16 @@
 
     function onReady(smart)  {
       
-      console.log(smart);
+
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
-        console.log(pt);
+
+        var cp = smart.patient.api.fetchAll({ type: 'CarePlan' });
+        $.when(pt,cp).done(function(patient,cp) {
+          console.log(cp);
+        });
+        
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
 //                     query: {
