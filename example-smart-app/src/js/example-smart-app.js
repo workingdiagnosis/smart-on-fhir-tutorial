@@ -14,7 +14,18 @@
         var patient = smart.patient;
         var pt = patient.read();
 
-        var cp = smart.patient.api.fetchAll({ type: 'CarePlan' });
+//         var cp = smart.patient.api.fetchAll({ type: 'CarePlan' });
+        
+            var cp = smart.patient.api.fetchAll({
+                    type: 'CarePlan',
+                    query: {
+                      category: {
+                        $exact: ['careteam']
+                      }
+                    }
+                  });
+        
+        
         $.when(pt,cp).done(function(patient,cp) {
           console.log(cp);
         });
