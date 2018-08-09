@@ -19,9 +19,7 @@
             var cp = smart.patient.api.fetchAll({
                     type: 'CarePlan',
                     query: {
-                      category: {
-                        $exact: ['careteam']
-                      }
+                      category: 'careteam'
                     }
                   });
         
